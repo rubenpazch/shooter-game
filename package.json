@@ -5,8 +5,10 @@
   "private": true,
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
+    "buildwatch": "webpack --config webpack.config.js --watch",
     "test": "jest",
-    "start": "webpack-dev-server --config ./webpack.dev.js --mode --open development"
+    "watchtest": "jest --watch *.js"
   },
   "repository": {
     "type": "git",
