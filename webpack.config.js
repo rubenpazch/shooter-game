@@ -1,10 +1,12 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/index.js',
   output: {
-    filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
+    filename: 'project.bundle.js',
   },
   module: {
     rules: [
@@ -12,19 +14,13 @@ module.exports = {
       { loader: 'style-loader!css-loader', test: /\.css$/ },
       { loader: 'url-loader', test: /\.gif$/ },
       { loader: 'file-loader', test: /\.(ttf|eot|svg)$/ },
+      { test: [/\.vert$/, /\.frag$/], use: 'raw-loader' },
     ],
   },
-  resolve: {
-    alias: {
-      config$: './configs/app-config.js',
-      react: './vendor/react-master',
-    },
-    extensions: ['js', 'jsx'],
-    modules: [
-      'node_modules',
-      'bower_components',
-      'shared',
-      '/shared/vendor/modules',
-    ],
-  },
+  plugins: [
+    new webpack.DefinePlugin({
+      CANVAS_RENDERER: JSON.stringify(true),
+      WEBGL_RENDERER: JSON.stringify(true),
+    }),
+  ],
 };
