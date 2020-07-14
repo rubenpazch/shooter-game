@@ -10,10 +10,9 @@ module.exports = {
   },
   module: {
     rules: [
-      { exclude: /'node_modules'/, loader: 'babel-loader', test: /\.jsx?$/ },
-      { loader: 'style-loader!css-loader', test: /\.css$/ },
-      { loader: 'url-loader', test: /\.gif$/ },
-      { loader: 'file-loader', test: /\.(ttf|eot|svg)$/ },
+      { test: /\.jsx?$/, exclude: /'node_modules'/, loader: 'babel-loader' },
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      { test: /\.gif$/, loader: 'url-loader' },
       { test: [/\.vert$/, /\.frag$/], use: 'raw-loader' },
     ],
   },

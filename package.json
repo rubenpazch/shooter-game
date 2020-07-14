@@ -1,9 +1,8 @@
 {
   "name": "shooter-game",
   "version": "1.0.0",
-  "description": "The goal of this project is build a full plataform game such as the space shooter hame ",
-  "private": true,
-  "main": "index.js",
+  "description": "The goal of this project is build a full plataform game such as the space shooter hame ",  
+  "main": "src/index.js",
   "scripts": {
     "build": "webpack",
     "buildwatch": "webpack --config webpack.config.js --watch",
@@ -45,6 +44,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "file-loader": "^6.0.0",
     "lodash": "^4.17.19",
     "phaser": "^3.23.0"
   },

@@ -1,12 +1,9 @@
-// import { Phaser } from 'phaser';
-import 'phaser';
-
-import SceneMainMenu from './SceneMainMenu';
-import SceneMain from './SceneMain';
-import SceneGameOver from './SceneGameOver';
+import { SceneMainMenu } from './SceneMainMenu';
+import { SceneMain } from './SceneMain';
+import { SceneGameOver } from './SceneGameOver';
 
 const config = {
-  type: Phaser.AUTO,
+  type: Phaser.WEBGL,
   width: 480,
   height: 640,
   backgroundColor: 'black',
