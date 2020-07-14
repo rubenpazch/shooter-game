@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 import Player from './Player';
 import GunShip from './GunShip';
 import ChaserShip from './ChaserShip';
@@ -261,5 +261,3 @@ export default class SceneMain extends Phaser.Scene {
     return arr;
   }
 }
-
-

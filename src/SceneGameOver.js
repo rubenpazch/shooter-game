@@ -1,4 +1,4 @@
-import 'phaser';
+import Phaser from 'phaser';
 
 export default class SceneGameOver extends Phaser.Scene {
   constructor() {
@@ -6,5 +6,6 @@ export default class SceneGameOver extends Phaser.Scene {
   }
 
   create() {
+    console.log('do somthing');
   }
 }
