@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
-import SceneMainMenu from './SceneMainMenu';
-import SceneMain from './SceneMain';
-import SceneGameOver from './SceneGameOver';
+import SceneMainMenu from './scenes/SceneMainMenu';
+import SceneMain from './scenes/SceneMain';
+import SceneGameOver from './scenes/SceneGameOver';
 
 const config = {
   type: Phaser.AUTO,
