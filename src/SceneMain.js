@@ -35,10 +35,7 @@ export default class SceneMain extends Phaser.Scene {
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.spritesheet('sprPlayerv2', 'assets/DurrrSpaceShip.png', {
-      frameWidth: 16,
-      frameHeight: 16,
-    });
+
     this.load.audio('sndExplode0', 'assets/sndExplode0.wav');
     this.load.audio('sndExplode1', 'assets/sndExplode1.wav');
     this.load.audio('sndLaser', 'assets/sndLaser.wav');
@@ -67,8 +64,8 @@ export default class SceneMain extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: 'sprPlayerv2',
-      frames: this.anims.generateFrameNumbers('sprPlayerv2'),
+      key: 'sprPlayer',
+      frames: this.anims.generateFrameNumbers('sprPlayer'),
       frameRate: 20,
       repeat: -1,
     });
@@ -88,7 +85,7 @@ export default class SceneMain extends Phaser.Scene {
       this,
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      'sprPlayerv2',
+      'sprPlayer',
     );
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
@@ -113,6 +110,7 @@ export default class SceneMain extends Phaser.Scene {
           && !enemy.getData('isDead')) {
         player.explode(false);
         enemy.explode(true);
+        player.onDestroy();
       }
     });
 
@@ -121,6 +119,7 @@ export default class SceneMain extends Phaser.Scene {
           && !laser.getData('isDead')) {
         player.explode(false);
         laser.destroy();
+        player.onDestroy();
       }
     });
 
