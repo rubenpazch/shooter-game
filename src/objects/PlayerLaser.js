@@ -2,7 +2,7 @@ import Entity from './Entities';
 
 class PlayerLaser extends Entity {
   constructor(scene, x, y) {
-    super(scene, x, y, 'sprLaserPlayer');
+    super(scene, x, y, 'sprLaserPlayerDual');
     this.body.velocity.y = -200;
   }
 }
