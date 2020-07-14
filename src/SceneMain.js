@@ -35,6 +35,10 @@ export default class SceneMain extends Phaser.Scene {
       frameWidth: 16,
       frameHeight: 16,
     });
+    this.load.spritesheet('sprPlayerv2', 'assets/DurrrSpaceShip.png', {
+      frameWidth: 16,
+      frameHeight: 16,
+    });
     this.load.audio('sndExplode0', 'assets/sndExplode0.wav');
     this.load.audio('sndExplode1', 'assets/sndExplode1.wav');
     this.load.audio('sndLaser', 'assets/sndLaser.wav');
@@ -63,8 +67,8 @@ export default class SceneMain extends Phaser.Scene {
     });
 
     this.anims.create({
-      key: 'sprPlayer',
-      frames: this.anims.generateFrameNumbers('sprPlayer'),
+      key: 'sprPlayerv2',
+      frames: this.anims.generateFrameNumbers('sprPlayerv2'),
       frameRate: 20,
       repeat: -1,
     });
@@ -84,7 +88,7 @@ export default class SceneMain extends Phaser.Scene {
       this,
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      'sprPlayer',
+      'sprPlayerv2',
     );
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
