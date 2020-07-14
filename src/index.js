@@ -5,8 +5,8 @@ import SceneGameOver from './scenes/SceneGameOver';
 
 const config = {
   type: Phaser.AUTO,
-  width: 480,
-  height: 640,
+  width: 780,
+  height: 840,
   backgroundColor: 'black',
   physics: {
     default: 'arcade',
@@ -17,7 +17,7 @@ const config = {
   scene: [
     SceneMainMenu,
     SceneMain,
-    SceneGameOver,
+    //SceneGameOver,
   ],
   pixelArt: true,
   roundPixels: true,

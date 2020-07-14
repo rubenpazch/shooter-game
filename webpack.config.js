@@ -14,6 +14,7 @@ module.exports = {
       { test: /\.css$/, loader: 'style-loader!css-loader' },
       { test: /\.gif$/, loader: 'url-loader' },
       { test: [/\.vert$/, /\.frag$/], use: 'raw-loader' },
+      { test: /\.(png|svg|jpg|gif)$/, use: ['file-loader'] },
     ],
   },
   plugins: [
