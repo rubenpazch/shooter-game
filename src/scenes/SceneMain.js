@@ -50,6 +50,7 @@ export default class SceneMain extends Phaser.Scene {
     this.load.audio('sndExplode0', 'assets/sndExplode0.wav');
     this.load.audio('sndExplode1', 'assets/sndExplode1.wav');
     this.load.audio('sndLaser', 'assets/sndLaser.wav');
+    this.load.audio('sndLaserBlaster', 'assets/blaster-firing.wav');
   }
 
   create() {
@@ -94,7 +95,7 @@ export default class SceneMain extends Phaser.Scene {
         this.sound.add('sndExplode0'),
         this.sound.add('sndExplode1'),
       ],
-      laser: this.sound.add('sndLaser'),
+      laser: this.sound.add('sndLaserBlaster'),
     };
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds

@@ -10,7 +10,9 @@ class SceneWelcome extends Phaser.Scene {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
+      bgMusic: this.sound.add('sndBgMusic'),
     };
+    this.sfx.bgMusic.play();
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
@@ -66,6 +68,16 @@ class SceneWelcome extends Phaser.Scene {
     this.btnPlay.on('pointerup', function () {
       this.btnPlay.setTexture('sprBtnPlay');
       this.scene.start('SceneMain');
+    }, this);
+
+    this.btnInstructions.on('pointerdown', function () {
+      this.btnInstructions.setTexture('sprBtnInstructions');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnInstructions.on('pointerup', function () {
+      this.btnInstructions.setTexture('sprBtnInstructions');
+      this.scene.start('SceneInstructions');
     }, this);
 
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'STARS WARS', {
