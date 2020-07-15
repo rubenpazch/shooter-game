@@ -21,15 +21,41 @@ class SceneWelcome extends Phaser.Scene {
       this.game.config.height / 2 + 70,
       'sprBtnInstructions',
     );
+
+    this.btnAbout = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height / 2 + 140,
+      'sprBtnAbout',
+    );
     this.btnPlay.setInteractive();
+    this.btnInstructions.setInteractive();
+    this.btnAbout.setInteractive();
 
     this.btnPlay.on('pointerover', function () {
       this.btnPlay.setTexture('sprBtnPlayHover'); // set the button texture to sprBtnPlayHover
       this.sfx.btnOver.play(); // play the button over sound
     }, this);
 
+    this.btnInstructions.on('pointerover', function () {
+      this.btnInstructions.setTexture('sprBtnInstructionsHover'); // set the button texture to sprBtnPlayHover
+      this.sfx.btnOver.play(); // play the button over sound
+    }, this);
+
+    this.btnAbout.on('pointerover', function () {
+      this.btnAbout.setTexture('sprBtnAboutHover'); // set the button texture to sprBtnPlayHover
+      this.sfx.btnOver.play(); // play the button over sound
+    }, this);
+
     this.btnPlay.on('pointerout', function () {
       this.setTexture('sprBtnPlay');
+    });
+
+    this.btnInstructions.on('pointerout', function () {
+      this.setTexture('sprBtnInstructions');
+    });
+
+    this.btnAbout.on('pointerout', function () {
+      this.setTexture('sprBtnAbout');
     });
 
     this.btnPlay.on('pointerdown', function () {
@@ -57,8 +83,18 @@ class SceneWelcome extends Phaser.Scene {
       color: '#ff0044',
       align: 'center',
     });
+
+    this.episode = this.add.text(this.game.config.width * 0.5, 248, 'Episode V', {
+      fontFamily: 'monospace',
+      fontSize: 25,
+      fontStyle: 'bold',
+      color: '#ff0044',
+      align: 'center',
+    });
+
     this.title.setOrigin(0.5);
     this.description.setOrigin(0.5);
+    this.episode.setOrigin(0.5);
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
