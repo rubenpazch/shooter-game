@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import ScrollingBackground from './ScrollingBackground';
 
+
 export default class SceneMainMenu extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneMainMenu' });
@@ -26,48 +27,16 @@ export default class SceneMainMenu extends Phaser.Scene {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
     };
-    this.scene.start('SceneMain');
-  //  this.btnPlay = this.add.sprite(
-  //    this.game.config.width * 0.5,
-  //    this.game.config.height * 0.5,
-  //    'sprBtnPlay',
-  //  );
-  //  this.btnPlay.setInteractive();
-  //  this.btnPlay.on('pointerover', function () {
-  //    this.btnPlay.setTexture('sprBtnPlayHover'); // set the button texture to sprBtnPlayHover
-  //    this.sfx.btnOver.play(); // play the button over sound
-  //  }, this);
-  //  this.btnPlay.on('pointerout', function () {
-  //    this.setTexture('sprBtnPlay');
-  //  });
-  //  this.btnPlay.on('pointerdown', function () {
-  //    this.btnPlay.setTexture('sprBtnPlayDown');
-  //    this.sfx.btnDown.play();
-  //  }, this);
-  //  this.btnPlay.on('pointerup', function () {
-  //    this.btnPlay.setTexture('sprBtnPlay');
-  //    this.scene.start('SceneMain');
-  //  }, this);
-  //  this.title = this.add.text(this.game.config.width * 0.5, 128, 'SPACE SHOOTER', {
-  //    fontFamily: 'monospace',
-  //    fontSize: 48,
-  //    fontStyle: 'bold',
-  //    color: '#ffffff',
-  //    align: 'center',
-  //  });
-  //  this.title.setOrigin(0.5);
-  //  this.backgrounds = [];
-  //  for (let i = 0; i < 5; i += 1) {
-  //    const keys = ['sprBg0', 'sprBg1'];
-  //    const key = keys[Phaser.Math.Between(0, keys.length - 1)];
-  //    const bg = new ScrollingBackground(this, key, i * 10);
-  //    this.backgrounds.push(bg);
-  //  }
+    this.scene.start('SceneWelcome');
+    //this.scene.start('SceneMain');
+    
+
+   
   }
 
-  //update() {
+  // update() {
   //  for (let i = 0; i < this.backgrounds.length; i += 1) {
   //    this.backgrounds[i].update();
   //  }
-  //}
+  // }
 }

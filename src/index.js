@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneMain from './scenes/SceneMain';
 import SceneGameOver from './scenes/SceneGameOver';
+import SceneWelcome from './scenes/SceneWelcome';
 
 const config = {
   type: Phaser.AUTO,
@@ -17,7 +18,8 @@ const config = {
   scene: [
     SceneMainMenu,
     SceneMain,
-    //SceneGameOver,
+    SceneWelcome,
+    // SceneGameOver,
   ],
   pixelArt: true,
   roundPixels: true,
