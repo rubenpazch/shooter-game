@@ -37,9 +37,8 @@ class Player extends Entity {
       } else { // when the "manual timer" is triggered:
         const laser = new PlayerLaser(this.scene, this.x + 25, this.y);
         this.scene.playerLasers.add(laser);
-
         this.scene.sfx.laser.play(); // play the laser sound effect
-        this.setData('timerShootTick', 0);
+        this.setData('timerShootTick', 1);
       }
     }
   }
