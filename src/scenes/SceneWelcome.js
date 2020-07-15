@@ -7,16 +7,25 @@ class SceneWelcome extends Phaser.Scene {
   }
 
   create() {
+    this.sfx = {
+      btnOver: this.sound.add('sndBtnOver'),
+      btnDown: this.sound.add('sndBtnDown'),
+    };
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
       'sprBtnPlay',
     );
+    this.btnInstructions = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height / 2 + 70,
+      'sprBtnInstructions',
+    );
     this.btnPlay.setInteractive();
 
     this.btnPlay.on('pointerover', function () {
       this.btnPlay.setTexture('sprBtnPlayHover'); // set the button texture to sprBtnPlayHover
-      //this.sfx.btnOver.play(); // play the button over sound
+      this.sfx.btnOver.play(); // play the button over sound
     }, this);
 
     this.btnPlay.on('pointerout', function () {
@@ -35,13 +44,21 @@ class SceneWelcome extends Phaser.Scene {
 
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'STARS WARS', {
       fontFamily: 'monospace',
-      fontSize: 48,
+      fontSize: 35,
       fontStyle: 'bold',
       color: '#ffffff',
       align: 'center',
     });
 
+    this.description = this.add.text(this.game.config.width * 0.5, 188, 'The Empire Strikes Back 1980', {
+      fontFamily: 'monospace',
+      fontSize: 25,
+      fontStyle: 'bold',
+      color: '#ff0044',
+      align: 'center',
+    });
     this.title.setOrigin(0.5);
+    this.description.setOrigin(0.5);
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
