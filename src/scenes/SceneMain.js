@@ -5,6 +5,9 @@ import ChaserShip from '../objects/ChaserShip';
 import CarrierShip from '../objects/CarrierShip';
 import MoldyShip from '../objects/MoldyShip';
 import ScrollingBackground from './ScrollingBackground';
+import gameModule from '../modules/gameModule';
+import playerFactory from '../objects/PlayerScore';
+import scoreFactory from '../factories/scoreFactory';
 
 export default class SceneMain extends Phaser.Scene {
   constructor() {

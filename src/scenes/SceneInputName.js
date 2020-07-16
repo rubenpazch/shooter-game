@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import ScrollingBackground from './ScrollingBackground';
+import PlayerScore from '../objects/PlayerScore';
 
 const COLOR_LIGHT = 0x7b5e57;
 
@@ -16,6 +17,12 @@ class SceneInputName extends Phaser.Scene {
   }
 
   create() {
+    this.playerInfo = new PlayerScore(
+      this,
+      100,
+      100,
+      'sprPlayerFalcon555',
+    );
     const halfScreen = this.game.config.width * 0.5;
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
@@ -34,7 +41,7 @@ class SceneInputName extends Phaser.Scene {
 
     let username = 'Type your name';
     this.textName = this.rexUI.add.roundRectangle(halfScreen, 400, 400, 40, 5).setStrokeStyle(2, COLOR_LIGHT);
-    this.textName = this.rexUI.add.BBCodeText(halfScreen-50, 340, username, { fixedWidth: 150, fixedHeight: 36, valign: 'center' });
+    this.textName = this.rexUI.add.BBCodeText(halfScreen - 50, 340, username, { fixedWidth: 150, fixedHeight: 36, valign: 'center' });
     this.textName = this.add.text(halfScreen, 400, 'Your Name : Jonh Smith', {
       fontFamily: 'monospace',
       fontSize: 25,
@@ -50,13 +57,14 @@ class SceneInputName extends Phaser.Scene {
         onTextChanged(textObject, text) {
           username = text;
           textObject.text = text;
-          console.log(username);
+          if (username !== undefined) {
+            //this.playerInfo.setName(username);
+            console.log(this.playerInfo);
+          }
         },
       };
       this.rexUI.edit(this.textName, configInput);
     });
-
-    console.log(username);
 
     this.btnStart = this.add.sprite(
       this.game.config.width * 0.5,
