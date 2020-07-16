@@ -6,6 +6,15 @@ class SceneWelcome extends Phaser.Scene {
     super({ key: 'SceneWelcome' });
   }
 
+  preload() {
+    this.load.image('sprBtnPlay', 'assets/sprBtnPlay.png');
+    this.load.image('sprBtnInstructions', 'assets/sprBtnInstructions.png');
+    this.load.image('sprBtnAbout', 'assets/sprBtnAbout.png');
+    this.load.image('sprBtnPlayHover', 'assets/sprBtnPlayHover.png');
+    this.load.image('sprBtnInstructionsHover', 'assets/sprBtnInstructionsHover.png');
+    this.load.image('sprBtnAboutHover', 'assets/sprBtnAboutHover.png');
+  }
+
   create() {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),

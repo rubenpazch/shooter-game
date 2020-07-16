@@ -29,7 +29,7 @@ const config = {
     SceneWelcome,
     SceneInstructions,
     SceneInputName,
-    // SceneGameOver,
+    SceneGameOver,
   ],
   pixelArt: true,
   roundPixels: true,

@@ -1,12 +1,14 @@
 import Phaser from 'phaser';
 import Entity from './Entities';
+import PlayerLaser from './PlayerLaser';
+import sendScore from '../modules/sendScore';
 
 class Player extends Entity {
   constructor(scene, x, y, key) {
     super(scene, x, y, key, 'Player');
     this.setData('speed', 200);
     this.setData('isShooting', false);
-    this.setData('timerShootDelay', 10);
+    this.setData('timerShootDelay', 20);
     this.setData('timerShootTick', this.getData('timerShootDelay') - 1);
   }
 
@@ -42,11 +44,12 @@ class Player extends Entity {
     }
   }
 
-  onDestroy() {
+  onDestroy(objPlayerInfo) {
     this.scene.time.addEvent({ // go to game over scene
       delay: 1000,
       callback() {
-        this.scene.scene.start('SceneGameOver');
+        sendScore.postNameScore(objPlayerInfo.getData('name'), objPlayerInfo.getData('score'));
+        this.scene.scene.start('SceneGameOver', { score: objPlayerInfo.getData('score') });
       },
       callbackScope: this,
       loop: false,

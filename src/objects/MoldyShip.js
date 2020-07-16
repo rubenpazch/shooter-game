@@ -6,7 +6,7 @@ class MoldyShip extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'sprEnemy3', 'MoldyShip');
     this.play('sprEnemy3');
-    this.body.velocity.y = Phaser.Math.Between(50, 100);
+    this.body.velocity.y = Phaser.Math.Between(150, 200);
     this.shootTimer = this.scene.time.addEvent({
       delay: 1000,
       callback() {

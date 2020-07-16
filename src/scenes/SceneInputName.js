@@ -17,13 +17,13 @@ class SceneInputName extends Phaser.Scene {
   }
 
   create() {
-    this.playerInfo = new PlayerScore(
-      this,
-      100,
-      100,
-      'sprPlayerFalcon555',
-    );
     const halfScreen = this.game.config.width * 0.5;
+    const playerInfo = new PlayerScore(
+      this,
+      -10,
+      -10,
+      '',
+    );
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
@@ -58,8 +58,7 @@ class SceneInputName extends Phaser.Scene {
           username = text;
           textObject.text = text;
           if (username !== undefined) {
-            //this.playerInfo.setName(username);
-            console.log(this.playerInfo);
+            playerInfo.setData('name', username);
           }
         },
       };
@@ -89,7 +88,7 @@ class SceneInputName extends Phaser.Scene {
 
     this.btnStart.on('pointerup', function () {
       this.btnStart.setTexture('sprBtnStart');
-      this.scene.start('SceneMain');
+      this.scene.start('SceneMain', { name: playerInfo.getData('name') });
     }, this);
 
 
