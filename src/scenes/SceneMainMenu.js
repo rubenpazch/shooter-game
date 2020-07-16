@@ -12,13 +12,11 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.load.image('sprBg1', 'assets/sprBg1.png');
     this.load.image('deepGalaxy', 'assets/sprBg3.png');
     this.load.image('sprBtnPlay', 'assets/sprBtnPlay.png');
-    this.load.image('sprBtnBack', 'assets/sprBtnBack.png');
     this.load.image('sprBtnInstructions', 'assets/sprBtnInstructions.png');
     this.load.image('sprBtnAbout', 'assets/sprBtnAbout.png');
     this.load.image('sprBtnPlayHover', 'assets/sprBtnPlayHover.png');
     this.load.image('sprBtnInstructionsHover', 'assets/sprBtnInstructionsHover.png');
     this.load.image('sprBtnAboutHover', 'assets/sprBtnAboutHover.png');
-    this.load.image('sprBtnBackHover', 'assets/sprBtnBackHover.png');
     this.load.image('sprBtnPlayDown', 'assets/sprBtnPlayDown.png');
     this.load.image('sprBtnRestart', 'assets/sprBtnRestart.png');
     this.load.image('sprBtnRestartHover', 'assets/sprBtnRestartHover.png');

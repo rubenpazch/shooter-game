@@ -67,7 +67,7 @@ class SceneWelcome extends Phaser.Scene {
 
     this.btnPlay.on('pointerup', function () {
       this.btnPlay.setTexture('sprBtnPlay');
-      this.scene.start('SceneMain');
+      this.scene.start('SceneInputName');
     }, this);
 
     this.btnInstructions.on('pointerdown', function () {
@@ -80,7 +80,7 @@ class SceneWelcome extends Phaser.Scene {
       this.scene.start('SceneInstructions');
     }, this);
 
-    this.title = this.add.text(this.game.config.width * 0.5, 128, 'STARS WARS', {
+    this.title = this.add.text(this.game.config.width * 0.5, 128, 'STAR WARS', {
       fontFamily: 'monospace',
       fontSize: 35,
       fontStyle: 'bold',

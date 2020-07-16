@@ -6,6 +6,11 @@ class SceneInstructions extends Phaser.Scene {
     super({ key: 'SceneInstructions' });
   }
 
+  preload() {
+    this.load.image('sprBtnBack', 'assets/sprBtnBack.png');
+    this.load.image('sprBtnBackHover', 'assets/sprBtnBackHover.png');
+  }
+
   create() {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
@@ -21,6 +26,7 @@ class SceneInstructions extends Phaser.Scene {
       align: 'center',
     });
 
+
     this.title.setOrigin(0.5);
 
     this.btnBack = this.add.sprite(
@@ -28,6 +34,26 @@ class SceneInstructions extends Phaser.Scene {
       this.game.config.height / 2 + 340,
       'sprBtnBack',
     );
+    this.btnBack.setInteractive();
+
+    this.btnBack.on('pointerover', function () {
+      this.btnBack.setTexture('sprBtnBackHover'); // set the button texture to sprBtnPlayHover
+      this.sfx.btnOver.play(); // play the button over sound
+    }, this);
+
+    this.btnBack.on('pointerout', function () {
+      this.setTexture('sprBtnBack');
+    });
+
+    this.btnBack.on('pointerdown', function () {
+      this.btnBack.setTexture('sprBtnBack');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnBack.on('pointerup', function () {
+      this.btnBack.setTexture('sprBtnBack');
+      this.scene.start('SceneWelcome');
+    }, this);
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
