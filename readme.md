@@ -13,7 +13,7 @@ This project consist on building a video game using JavaScript and the game engi
 - Webpack modules
 - Phaser 3
 - Jest
-- Babel
+- Babel  
 
 ## Live Demo
 
