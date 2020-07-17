@@ -1,5 +1,5 @@
 const sendScore = (() => {
-  async function postNameScore(name, score) {
+  async function postNameScore(name, scoreResult) {
     const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/WxgWXnTlpUEBzwAvQ8FQ/scores/';
     const response = await fetch(url, {
       method: 'POST',
@@ -9,7 +9,7 @@ const sendScore = (() => {
       },
       body: JSON.stringify({
         user: name,
-        score,
+        score: scoreResult,
       }),
     });
     const data = await response.json();
