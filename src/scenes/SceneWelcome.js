@@ -105,7 +105,7 @@ class SceneWelcome extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown'),
       bgMusic: this.sound.add('sndBgMusic'),
     };
-    this.sfx.bgMusic.play();
+    //this.sfx.bgMusic.play();
     this.createBtnPlay();
     this.createBtnInstructions();
     this.createBtnAbout();
