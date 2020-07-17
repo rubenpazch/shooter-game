@@ -6,7 +6,7 @@ import SceneGameOver from './scenes/SceneGameOver';
 import SceneWelcome from './scenes/SceneWelcome';
 import SceneInstructions from './scenes/SceneInstructions';
 import SceneInputName from './scenes/SceneInputName';
-
+import SceneAbout from './scenes/SceneAbout';
 
 const config = {
   parent: 'phaser-container',
@@ -30,6 +30,7 @@ const config = {
     SceneInstructions,
     SceneInputName,
     SceneGameOver,
+    SceneAbout,
   ],
   pixelArt: true,
   roundPixels: true,

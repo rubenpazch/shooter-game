@@ -65,24 +65,7 @@ export default class SceneMain extends Phaser.Scene {
     this.load.audio('sndLaserBlaster', 'assets/blaster-firing.wav');
   }
 
-  create() {
-    const halfScreen = this.game.config.width * 0.5;
-    this.playerName = this.add.text(20, 20, `Player Name :  ${this.playerInfo.getData('name')}`, {
-      fontFamily: 'monospace',
-      fontSize: 12,
-      fontStyle: 'bold',
-      color: '#ffffff',
-      align: 'center',
-    });
-
-    this.playerScore = this.add.text(this.playerName.width + 50, 20, `Score :  ${this.playerInfo.getData('score')}`, {
-      fontFamily: 'monospace',
-      fontSize: 12,
-      fontStyle: 'bold',
-      color: '#ffffff',
-      align: 'center',
-    });
-
+  createGameIcons() {
     this.anims.create({
       key: 'sprEnemy0',
       frames: this.anims.generateFrameNumbers('sprEnemy0'),
@@ -119,34 +102,45 @@ export default class SceneMain extends Phaser.Scene {
       frameRate: 20,
       repeat: -1,
     });
-    this.sfx = {
-      explosions: [
-        this.sound.add('sndExplode0'),
-        this.sound.add('sndExplode1'),
-      ],
-      laser: this.sound.add('sndLaserBlaster'),
-    };
-    this.backgrounds = [];
-    for (let i = 0; i < 5; i += 1) { // create five scrolling backgrounds
-      const bg = new ScrollingBackground(this, 'sprBg1', i * 10);
-      this.backgrounds.push(bg);
-    }
-    this.player = new Player(
-      this,
-      halfScreen,
-      this.game.config.height * 0.5,
-      'sprPlayerFalcon',
-    );
+  }
+
+  setKeyboard() {
     this.keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
     this.keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
     this.keyA = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.keyD = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+  }
 
-    this.enemies = this.add.group();
-    this.enemyLasers = this.add.group();
-    this.playerLasers = this.add.group();
+  textPlayerName() {
+    this.playerName = this.add.text(20, 20, `Player Name :  ${this.playerInfo.getData('name')}`, {
+      fontFamily: 'monospace',
+      fontSize: 12,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center',
+    });
+  }
 
+  textScorePlayer() {
+    this.playerScore = this.add.text(this.playerName.width + 50, 20, `Score :  ${this.playerInfo.getData('score')}`, {
+      fontFamily: 'monospace',
+      fontSize: 12,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center',
+    });
+  }
+
+  scrollingBackgrounds() {
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) {
+      const bg = new ScrollingBackground(this, 'sprBg1', i * 10);
+      this.backgrounds.push(bg);
+    }
+  }
+
+  colliderPlayerToEnemies() {
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy.active === true) {
         this.playerInfo.setData('score', this.playerInfo.getData('score') + 1);
@@ -160,6 +154,9 @@ export default class SceneMain extends Phaser.Scene {
         playerLaser.destroy();
       }
     });
+  }
+
+  overlapPlayerToEnemie() {
     this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
       if (!player.getData('isDead')
           && !enemy.getData('isDead')) {
@@ -168,6 +165,9 @@ export default class SceneMain extends Phaser.Scene {
         player.onDestroy(this.playerInfo);
       }
     });
+  }
+
+  overlapLaserEnemieToPlayer() {
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData('isDead')
           && !laser.getData('isDead')) {
@@ -176,8 +176,45 @@ export default class SceneMain extends Phaser.Scene {
         player.onDestroy(this.playerInfo);
       }
     });
+  }
+
+  create() {
+    const halfScreen = this.game.config.width * 0.5;
+    const centerScreen = this.game.config.height * 0.5;
+
+    this.textPlayerName();
+    this.textScorePlayer();
+
+    this.sfx = {
+      explosions: [
+        this.sound.add('sndExplode0'),
+        this.sound.add('sndExplode1'),
+      ],
+      laser: this.sound.add('sndLaserBlaster'),
+    };
+    this.createGameIcons();
+    this.setKeyboard();
+    this.scrollingBackgrounds();
+
+    this.player = new Player(
+      this,
+      halfScreen,
+      centerScreen,
+      'sprPlayerFalcon',
+    );
+    this.enemies = this.add.group();
+    this.enemyLasers = this.add.group();
+    this.playerLasers = this.add.group();
+
+    this.colliderPlayerToEnemies();
+    this.overlapPlayerToEnemie();
+    this.overlapLaserEnemieToPlayer();
+    this.addEventTimerEnemies();
+  }
+
+  addEventTimerEnemies() {
     this.time.addEvent({
-      delay: 1000,
+      delay: 400,
       callback() {
         let enemy = null;
         if (Phaser.Math.Between(0, 10) >= 3) {
@@ -219,6 +256,28 @@ export default class SceneMain extends Phaser.Scene {
     });
   }
 
+  changeVelocity() {
+    const scoreTotal = this.playerInfo.getData('score');
+    switch (scoreTotal) {
+      case 5:
+        console.log('score 5');
+        this.delayEnemie = 800;
+        break;
+      case 10:
+        console.log('score 10');
+        this.delayEnemie = 600;
+        break;
+      case 15:
+        console.log('score 15');
+        this.delayEnemie = 400;
+        break;
+      default:
+        console.log('score 0');
+        this.delayEnemie = 1000;
+        break;
+    }
+  }
+
   update() {
     this.player.update();
     if (this.keyW.isDown) {
@@ -234,7 +293,7 @@ export default class SceneMain extends Phaser.Scene {
     }
 
     this.playerScore.text = `Score :  ${this.playerInfo.getData('score')}`;
-
+    this.changeVelocity();
 
     for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
       const enemy = this.enemies.getChildren()[i];
@@ -276,8 +335,6 @@ export default class SceneMain extends Phaser.Scene {
       }
     }
     if (this.keySpace.isDown) {
-      this.player.setData('isShooting', true);
-    } else if (this.input.activePointer.isDown) {
       this.player.setData('isShooting', true);
     } else {
       this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);

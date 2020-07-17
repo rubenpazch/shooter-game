@@ -1,15 +1,15 @@
 import Phaser from 'phaser';
 import ScrollingBackground from './ScrollingBackground';
 
-class SceneInstructions extends Phaser.Scene {
+class SceneAbout extends Phaser.Scene {
   constructor() {
-    super({ key: 'SceneInstructions' });
+    super({ key: 'SceneAbout' });
   }
 
   preload() {
     this.load.image('sprBtnBack', 'assets/sprBtnBack.png');
     this.load.image('sprBtnBackHover', 'assets/sprBtnBackHover.png');
-    this.load.image('sprInfoInstructions', 'assets/sprInfoInstructions.png');
+    this.load.image('sprHistory', 'assets/history.png');
   }
 
   createBtnBack() {
@@ -48,7 +48,8 @@ class SceneInstructions extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown'),
     };
     this.createBtnBack();
-    this.bg = this.add.image(380, 400, 'sprInfoInstructions');
+    this.bg = this.add.image(380, 400, 'sprHistory');
+    this.bg.setScale(0.3);
 
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'STARS WARS', {
       fontFamily: 'monospace',
@@ -70,4 +71,4 @@ class SceneInstructions extends Phaser.Scene {
   }
 }
 
-export default SceneInstructions;
+export default SceneAbout;

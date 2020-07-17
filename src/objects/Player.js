@@ -6,9 +6,9 @@ import sendScore from '../modules/sendScore';
 class Player extends Entity {
   constructor(scene, x, y, key) {
     super(scene, x, y, key, 'Player');
-    this.setData('speed', 200);
+    this.setData('speed', 300);
     this.setData('isShooting', false);
-    this.setData('timerShootDelay', 20);
+    this.setData('timerShootDelay', 10);
     this.setData('timerShootTick', this.getData('timerShootDelay') - 1);
   }
 

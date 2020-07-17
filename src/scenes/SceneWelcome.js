@@ -94,7 +94,7 @@ class SceneWelcome extends Phaser.Scene {
 
     this.btnAbout.on('pointerup', function btnAboutUp() {
       this.btnAbout.setTexture('sprBtnAbout');
-      this.scene.start('SceneInstructions');
+      this.scene.start('SceneAbout');
     }, this);
   }
 
