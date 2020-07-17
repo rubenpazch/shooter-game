@@ -8,9 +8,9 @@ import ScrollingBackground from './ScrollingBackground';
 import PlayerScore from '../objects/PlayerScore';
 
 
-export default class SceneMain extends Phaser.Scene {
+export default class SceneStageTwo extends Phaser.Scene {
   constructor() {
-    super({ key: 'SceneMain' });
+    super({ key: 'SceneStageTwo' });
   }
 
   init(data) {
@@ -21,7 +21,7 @@ export default class SceneMain extends Phaser.Scene {
       '',
     );
     this.playerInfo.setData('name', data.name);
-    this.playerInfo.setData('score', 0);
+    this.playerInfo.setData('score', data.scoreStageOne);
   }
 
   preload() {
@@ -138,8 +138,8 @@ export default class SceneMain extends Phaser.Scene {
     });
   }
 
-  textScoreStage() {
-    this.playerStage = this.add.text(this.playerName.width + this.playerScore.width + 100, 20, 'Stage 1', {
+  textScoreStageTwo() {
+    this.playerStage = this.add.text(this.playerName.width + this.playerScore.width + 100, 20, 'Stage 2', {
       fontFamily: 'monospace',
       fontSize: 12,
       fontStyle: 'bold',
@@ -147,6 +147,7 @@ export default class SceneMain extends Phaser.Scene {
       align: 'center',
     });
   }
+
 
   scrollingBackgrounds() {
     this.backgrounds = [];
@@ -200,7 +201,7 @@ export default class SceneMain extends Phaser.Scene {
 
     this.textPlayerName();
     this.textScorePlayer();
-    this.textScoreStage();
+    this.textScoreStageTwo();
 
     this.sfx = {
       explosions: [
@@ -232,7 +233,7 @@ export default class SceneMain extends Phaser.Scene {
   addEventTimerEnemies() {
     const halfScreen = this.game.config.width;
     this.time.addEvent({
-      delay: 1000,
+      delay: 600,
       callback() {
         let enemy = null;
         const aleatoryElement = Phaser.Math.Between(0, 10);
@@ -265,13 +266,6 @@ export default class SceneMain extends Phaser.Scene {
     });
   }
 
-  changeStage() {
-    const scoreTotal = this.playerInfo.getData('score');
-    if (scoreTotal === 5) {
-      this.scene.start('SceneStageTwo', { name: this.playerInfo.getData('name'), scoreStageOne: this.playerInfo.getData('score') });
-    }
-  }
-
   update() {
     this.player.update();
     if (this.keyW.isDown) {
@@ -287,7 +281,6 @@ export default class SceneMain extends Phaser.Scene {
     }
 
     this.playerScore.text = `Score :  ${this.playerInfo.getData('score')}`;
-    this.changeStage();
 
     for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
       const enemy = this.enemies.getChildren()[i];
