@@ -11,11 +11,42 @@ class SceneInstructions extends Phaser.Scene {
     this.load.image('sprBtnBackHover', 'assets/sprBtnBackHover.png');
   }
 
+  createBtnBack() {
+    const halfScreen = this.game.config.width * 0.5;
+    const centerScreen = this.game.config.height * 0.5;
+    this.btnBack = this.add.sprite(
+      halfScreen,
+      centerScreen + 340,
+      'sprBtnBack',
+    );
+    this.btnBack.setInteractive();
+
+    this.btnBack.on('pointerover', function fnBtnBackOver() {
+      this.btnBack.setTexture('sprBtnBackHover'); // set the button texture to sprBtnPlayHover
+      this.sfx.btnOver.play(); // play the button over sound
+    }, this);
+
+    this.btnBack.on('pointerout', function fnBtnBackOut() {
+      this.setTexture('sprBtnBack');
+    });
+
+    this.btnBack.on('pointerdown', function fnBtnBackDown() {
+      this.btnBack.setTexture('sprBtnBack');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnBack.on('pointerup', function fnBtnBackUp() {
+      this.btnBack.setTexture('sprBtnBack');
+      this.scene.start('SceneWelcome');
+    }, this);
+  }
+
   create() {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
     };
+    this.createBtnBack();
     this.bg = this.add.image(380, 400, 'sprInfoInstructions');
 
     this.title = this.add.text(this.game.config.width * 0.5, 128, 'STARS WARS', {
@@ -26,34 +57,7 @@ class SceneInstructions extends Phaser.Scene {
       align: 'center',
     });
 
-
     this.title.setOrigin(0.5);
-
-    this.btnBack = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height / 2 + 340,
-      'sprBtnBack',
-    );
-    this.btnBack.setInteractive();
-
-    this.btnBack.on('pointerover', function () {
-      this.btnBack.setTexture('sprBtnBackHover'); // set the button texture to sprBtnPlayHover
-      this.sfx.btnOver.play(); // play the button over sound
-    }, this);
-
-    this.btnBack.on('pointerout', function () {
-      this.setTexture('sprBtnBack');
-    });
-
-    this.btnBack.on('pointerdown', function () {
-      this.btnBack.setTexture('sprBtnBack');
-      this.sfx.btnDown.play();
-    }, this);
-
-    this.btnBack.on('pointerup', function () {
-      this.btnBack.setTexture('sprBtnBack');
-      this.scene.start('SceneWelcome');
-    }, this);
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {

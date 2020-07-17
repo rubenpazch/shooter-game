@@ -50,19 +50,19 @@ class SceneWelcome extends Phaser.Scene {
       'sprBtnInstructions',
     );
     this.btnInstructions.setInteractive();
-    this.btnInstructions.on('pointerover', function btnInstructionsHover() {
+    this.btnInstructions.on('pointerover', function btnInstructionsOver() {
       this.btnInstructions.setTexture('sprBtnInstructionsHover'); // set the button texture to sprBtnPlayHover
       this.sfx.btnOver.play(); // play the button over sound
     }, this);
-    this.btnInstructions.on('pointerout', function () {
+    this.btnInstructions.on('pointerout', function btnInstructionsOut() {
       this.setTexture('sprBtnInstructions');
     });
-    this.btnInstructions.on('pointerdown', function () {
+    this.btnInstructions.on('pointerdown', function btnInstructionsDown() {
       this.btnInstructions.setTexture('sprBtnInstructions');
       this.sfx.btnDown.play();
     }, this);
 
-    this.btnInstructions.on('pointerup', function () {
+    this.btnInstructions.on('pointerup', function btnInstructionsUp() {
       this.btnInstructions.setTexture('sprBtnInstructions');
       this.scene.start('SceneInstructions');
     }, this);
