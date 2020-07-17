@@ -18,6 +18,37 @@ export default class SceneGameOver extends Phaser.Scene {
     this.load.image('sprBtnRestartDown', 'assets/sprBtnRestartDown.png');
   }
 
+  createBtnRestart() {
+    const halfScreen = this.game.config.width * 0.5;
+    const centerScreen = this.game.config.height * 0.5;
+
+    this.btnRestart = this.add.sprite(
+      halfScreen,
+      centerScreen,
+      'sprBtnRestart',
+    );
+    this.btnRestart.setInteractive();
+
+    this.btnRestart.on('pointerover', function fnBtnRestartOver() {
+      this.btnRestart.setTexture('sprBtnRestartHover'); // set the button texture to sprBtnPlayHover
+      this.sfx.btnOver.play(); // play the button over sound
+    }, this);
+
+    this.btnRestart.on('pointerout', function fnBtnRestartOut() {
+      this.setTexture('sprBtnRestart');
+    });
+
+    this.btnRestart.on('pointerdown', function fnBtnRestartDown() {
+      this.btnRestart.setTexture('sprBtnRestartDown');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnRestart.on('pointerup', function fnBtnRestartUp() {
+      this.btnRestart.setTexture('sprBtnRestart');
+      this.scene.start('SceneMain');
+    }, this);
+  }
+
   create() {
     const halfScreen = this.game.config.width * 0.5;
     this.sfx = {
@@ -41,31 +72,6 @@ export default class SceneGameOver extends Phaser.Scene {
         align: 'center',
       });
       this.higherScore.setOrigin(0.5);
-      this.btnRestart = this.add.sprite(
-        this.game.config.width * 0.5,
-        this.game.config.height * 0.5,
-        'sprBtnRestart',
-      );
-      this.btnRestart.setInteractive();
-
-      this.btnRestart.on('pointerover', function () {
-        this.btnRestart.setTexture('sprBtnRestartHover'); // set the button texture to sprBtnPlayHover
-        this.sfx.btnOver.play(); // play the button over sound
-      }, this);
-
-      this.btnRestart.on('pointerout', function () {
-        this.setTexture('sprBtnRestart');
-      });
-
-      this.btnRestart.on('pointerdown', function () {
-        this.btnRestart.setTexture('sprBtnRestartDown');
-        this.sfx.btnDown.play();
-      }, this);
-
-      this.btnRestart.on('pointerup', function () {
-        this.btnRestart.setTexture('sprBtnRestart');
-        this.scene.start('SceneMain');
-      }, this);
     });
 
     this.playerScore = this.add.text(halfScreen, 350, `Your score was :  ${this.resultScore.score}`, {

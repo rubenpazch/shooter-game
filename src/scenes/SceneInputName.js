@@ -16,6 +16,66 @@ class SceneInputName extends Phaser.Scene {
     this.load.image('sprBtnStartHover', 'assets/sprBtnStartHover.png');
   }
 
+  createBtnStart(playerInfo) {
+    const halfScreen = this.game.config.width * 0.5;
+    const centerScreen = this.game.config.height * 0.5;
+    this.btnStart = this.add.sprite(
+      halfScreen,
+      centerScreen + 240,
+      'sprBtnStart',
+    );
+    this.btnStart.setInteractive();
+
+    this.btnStart.on('pointerover', function fnBtnStartOver() {
+      this.btnStart.setTexture('sprBtnStartHover'); // set the button texture to sprBtnPlayHover
+      this.sfx.btnOver.play(); // play the button over sound
+    }, this);
+
+    this.btnStart.on('pointerout', function fnBtnStartOut() {
+      this.setTexture('sprBtnStart');
+    });
+
+    this.btnStart.on('pointerdown', function fnBtnStartDown() {
+      this.btnStart.setTexture('sprBtnStart');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnStart.on('pointerup', function fnBtnStartUp() {
+      this.btnStart.setTexture('sprBtnStart');
+      this.scene.start('SceneMain', { name: playerInfo.getData('name') });
+    }, this);
+  }
+
+  createBtnBack() {
+    const halfScreen = this.game.config.width * 0.5;
+    const centerScreen = this.game.config.height * 0.5;
+    this.btnBack = this.add.sprite(
+      halfScreen,
+      centerScreen + 340,
+      'sprBtnBack',
+    );
+    this.btnBack.setInteractive();
+
+    this.btnBack.on('pointerover', function fnBtnBackOver() {
+      this.btnBack.setTexture('sprBtnBackHover'); // set the button texture to sprBtnPlayHover
+      this.sfx.btnOver.play(); // play the button over sound
+    }, this);
+
+    this.btnBack.on('pointerout', function fnBtnBackOut() {
+      this.setTexture('sprBtnBack');
+    });
+
+    this.btnBack.on('pointerdown', function fnBtnBackDown() {
+      this.btnBack.setTexture('sprBtnBack');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnBack.on('pointerup', function fnBtnBackUp() {
+      this.btnBack.setTexture('sprBtnBack');
+      this.scene.start('SceneWelcome');
+    }, this);
+  }
+
   create() {
     const halfScreen = this.game.config.width * 0.5;
     const playerInfo = new PlayerScore(
@@ -29,6 +89,9 @@ class SceneInputName extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown'),
     };
 
+    this.createBtnStart(playerInfo);
+    this.createBtnBack();
+
     this.title = this.add.text(halfScreen, 128, 'STAR WARS', {
       fontFamily: 'monospace',
       fontSize: 35,
@@ -37,7 +100,6 @@ class SceneInputName extends Phaser.Scene {
       align: 'center',
     });
     this.title.setOrigin(0.5);
-
 
     let username = 'Type your name';
     this.textName = this.rexUI.add.roundRectangle(halfScreen, 400, 400, 40, 5).setStrokeStyle(2, COLOR_LIGHT);
@@ -49,7 +111,6 @@ class SceneInputName extends Phaser.Scene {
       color: '#ffffff',
       align: 'center',
     });
-
     this.textName.setOrigin(0.5);
 
     this.textName.setInteractive().on('pointerdown', () => {
@@ -64,59 +125,6 @@ class SceneInputName extends Phaser.Scene {
       };
       this.rexUI.edit(this.textName, configInput);
     });
-
-    this.btnStart = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height / 2 + 240,
-      'sprBtnStart',
-    );
-    this.btnStart.setInteractive();
-
-    this.btnStart.on('pointerover', function () {
-      this.btnStart.setTexture('sprBtnStartHover'); // set the button texture to sprBtnPlayHover
-      this.sfx.btnOver.play(); // play the button over sound
-    }, this);
-
-    this.btnStart.on('pointerout', function () {
-      this.setTexture('sprBtnStart');
-    });
-
-    this.btnStart.on('pointerdown', function () {
-      this.btnStart.setTexture('sprBtnStart');
-      this.sfx.btnDown.play();
-    }, this);
-
-    this.btnStart.on('pointerup', function () {
-      this.btnStart.setTexture('sprBtnStart');
-      this.scene.start('SceneMain', { name: playerInfo.getData('name') });
-    }, this);
-
-
-    this.btnBack = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height / 2 + 340,
-      'sprBtnBack',
-    );
-    this.btnBack.setInteractive();
-
-    this.btnBack.on('pointerover', function () {
-      this.btnBack.setTexture('sprBtnBackHover'); // set the button texture to sprBtnPlayHover
-      this.sfx.btnOver.play(); // play the button over sound
-    }, this);
-
-    this.btnBack.on('pointerout', function () {
-      this.setTexture('sprBtnBack');
-    });
-
-    this.btnBack.on('pointerdown', function () {
-      this.btnBack.setTexture('sprBtnBack');
-      this.sfx.btnDown.play();
-    }, this);
-
-    this.btnBack.on('pointerup', function () {
-      this.btnBack.setTexture('sprBtnBack');
-      this.scene.start('SceneWelcome');
-    }, this);
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
