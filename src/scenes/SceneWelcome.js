@@ -15,70 +15,48 @@ class SceneWelcome extends Phaser.Scene {
     this.load.image('sprBtnAboutHover', 'assets/sprBtnAboutHover.png');
   }
 
-  create() {
-    this.sfx = {
-      btnOver: this.sound.add('sndBtnOver'),
-      btnDown: this.sound.add('sndBtnDown'),
-      bgMusic: this.sound.add('sndBgMusic'),
-    };
-    this.sfx.bgMusic.play();
-    this.btnPlay = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
-      'sprBtnPlay',
-    );
-    this.btnInstructions = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height / 2 + 70,
-      'sprBtnInstructions',
-    );
-
-    this.btnAbout = this.add.sprite(
-      this.game.config.width * 0.5,
-      this.game.config.height / 2 + 140,
-      'sprBtnAbout',
-    );
+  createBtnPlay() {
+    const halfScreen = this.game.config.width * 0.5;
+    const centerScreen = this.game.config.height * 0.5;
+    this.btnPlay = this.add.sprite(halfScreen, centerScreen, 'sprBtnPlay');
     this.btnPlay.setInteractive();
-    this.btnInstructions.setInteractive();
-    this.btnAbout.setInteractive();
 
-    this.btnPlay.on('pointerover', function () {
-      this.btnPlay.setTexture('sprBtnPlayHover'); // set the button texture to sprBtnPlayHover
-      this.sfx.btnOver.play(); // play the button over sound
+    this.btnPlay.on('pointerover', function btnPlayHover() {
+      this.btnPlay.setTexture('sprBtnPlayHover');
+      this.sfx.btnOver.play();
     }, this);
 
-    this.btnInstructions.on('pointerover', function () {
-      this.btnInstructions.setTexture('sprBtnInstructionsHover'); // set the button texture to sprBtnPlayHover
-      this.sfx.btnOver.play(); // play the button over sound
-    }, this);
-
-    this.btnAbout.on('pointerover', function () {
-      this.btnAbout.setTexture('sprBtnAboutHover'); // set the button texture to sprBtnPlayHover
-      this.sfx.btnOver.play(); // play the button over sound
-    }, this);
-
-    this.btnPlay.on('pointerout', function () {
+    this.btnPlay.on('pointerout', function btnPlayOut() {
       this.setTexture('sprBtnPlay');
     });
 
-    this.btnInstructions.on('pointerout', function () {
-      this.setTexture('sprBtnInstructions');
-    });
-
-    this.btnAbout.on('pointerout', function () {
-      this.setTexture('sprBtnAbout');
-    });
-
-    this.btnPlay.on('pointerdown', function () {
+    this.btnPlay.on('pointerdown', function btnPlayDown() {
       this.btnPlay.setTexture('sprBtnPlayDown');
       this.sfx.btnDown.play();
     }, this);
 
-    this.btnPlay.on('pointerup', function () {
+    this.btnPlay.on('pointerup', function btnPlayUp() {
       this.btnPlay.setTexture('sprBtnPlay');
       this.scene.start('SceneInputName');
     }, this);
+  }
 
+  createBtnInstructions() {
+    const halfScreen = this.game.config.width * 0.5;
+    const centerScreen = this.game.config.height * 0.5;
+    this.btnInstructions = this.add.sprite(
+      halfScreen,
+      centerScreen + 70,
+      'sprBtnInstructions',
+    );
+    this.btnInstructions.setInteractive();
+    this.btnInstructions.on('pointerover', function btnInstructionsHover() {
+      this.btnInstructions.setTexture('sprBtnInstructionsHover'); // set the button texture to sprBtnPlayHover
+      this.sfx.btnOver.play(); // play the button over sound
+    }, this);
+    this.btnInstructions.on('pointerout', function () {
+      this.setTexture('sprBtnInstructions');
+    });
     this.btnInstructions.on('pointerdown', function () {
       this.btnInstructions.setTexture('sprBtnInstructions');
       this.sfx.btnDown.play();
@@ -88,33 +66,65 @@ class SceneWelcome extends Phaser.Scene {
       this.btnInstructions.setTexture('sprBtnInstructions');
       this.scene.start('SceneInstructions');
     }, this);
+  }
 
-    this.title = this.add.text(this.game.config.width * 0.5, 128, 'STAR WARS', {
+  createBtnAbout() {
+    const halfScreen = this.game.config.width * 0.5;
+    const centerScreen = this.game.config.height * 0.5;
+    this.btnAbout = this.add.sprite(
+      halfScreen,
+      centerScreen + 140,
+      'sprBtnAbout',
+    );
+    this.btnAbout.setInteractive();
+
+    this.btnAbout.on('pointerover', function btnAboutHover() {
+      this.btnAbout.setTexture('sprBtnAboutHover'); // set the button texture to sprBtnPlayHover
+      this.sfx.btnOver.play(); // play the button over sound
+    }, this);
+
+    this.btnAbout.on('pointerout', function () {
+      this.setTexture('sprBtnAbout');
+    });
+  }
+
+  create() {
+    const halfScreen = this.game.config.width * 0.5;
+    this.sfx = {
+      btnOver: this.sound.add('sndBtnOver'),
+      btnDown: this.sound.add('sndBtnDown'),
+      bgMusic: this.sound.add('sndBgMusic'),
+    };
+    this.sfx.bgMusic.play();
+    this.createBtnPlay();
+    this.createBtnInstructions();
+    this.createBtnAbout();
+
+    this.title = this.add.text(halfScreen, 128, 'STAR WARS', {
       fontFamily: 'monospace',
       fontSize: 35,
       fontStyle: 'bold',
       color: '#ffffff',
       align: 'center',
     });
-
-    this.description = this.add.text(this.game.config.width * 0.5, 188, 'The Empire Strikes Back 1980', {
-      fontFamily: 'monospace',
-      fontSize: 25,
-      fontStyle: 'bold',
-      color: '#ff0044',
-      align: 'center',
-    });
-
-    this.episode = this.add.text(this.game.config.width * 0.5, 248, 'Episode V', {
-      fontFamily: 'monospace',
-      fontSize: 25,
-      fontStyle: 'bold',
-      color: '#ff0044',
-      align: 'center',
-    });
-
     this.title.setOrigin(0.5);
+
+    this.description = this.add.text(halfScreen, 188, 'The Empire Strikes Back 1980', {
+      fontFamily: 'monospace',
+      fontSize: 25,
+      fontStyle: 'bold',
+      color: '#ff0044',
+      align: 'center',
+    });
     this.description.setOrigin(0.5);
+
+    this.episode = this.add.text(halfScreen, 248, 'Episode V', {
+      fontFamily: 'monospace',
+      fontSize: 25,
+      fontStyle: 'bold',
+      color: '#ff0044',
+      align: 'center',
+    });
     this.episode.setOrigin(0.5);
 
     this.backgrounds = [];

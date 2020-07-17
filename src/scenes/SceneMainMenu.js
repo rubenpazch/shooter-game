@@ -1,6 +1,4 @@
 import Phaser from 'phaser';
-import ScrollingBackground from './ScrollingBackground';
-
 
 export default class SceneMainMenu extends Phaser.Scene {
   constructor() {
@@ -21,10 +19,4 @@ export default class SceneMainMenu extends Phaser.Scene {
   create() {
     this.scene.start('SceneWelcome');
   }
-
-  // update() {
-  //  for (let i = 0; i < this.backgrounds.length; i += 1) {
-  //    this.backgrounds[i].update();
-  //  }
-  // }
 }
