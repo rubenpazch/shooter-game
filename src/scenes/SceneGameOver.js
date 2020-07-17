@@ -16,6 +16,8 @@ export default class SceneGameOver extends Phaser.Scene {
     this.load.image('sprBtnRestart', 'assets/sprBtnRestart.png');
     this.load.image('sprBtnRestartHover', 'assets/sprBtnRestartHover.png');
     this.load.image('sprBtnRestartDown', 'assets/sprBtnRestartDown.png');
+    this.load.image('sprBtnGoHome', 'assets/sprBtnGoHome.png');
+    this.load.image('sprBtnGoHomeHover', 'assets/sprBtnGoHomeOver.png');
   }
 
   createBtnRestart() {
@@ -49,6 +51,37 @@ export default class SceneGameOver extends Phaser.Scene {
     }, this);
   }
 
+  createBtnGoHome() {
+    const halfScreen = this.game.config.width * 0.5;
+    const centerScreen = this.game.config.height * 0.5;
+
+    this.btnGoHome = this.add.sprite(
+      halfScreen,
+      centerScreen + 90,
+      'sprBtnGoHome',
+    );
+    this.btnGoHome.setInteractive();
+
+    this.btnGoHome.on('pointerover', function fnBtnGoHomeOver() {
+      this.btnGoHome.setTexture('sprBtnGoHomeHover');
+      this.sfx.btnOver.play();
+    }, this);
+
+    this.btnGoHome.on('pointerout', function fnBtnGoHomeOut() {
+      this.setTexture('sprBtnGoHome');
+    });
+
+    this.btnGoHome.on('pointerdown', function fnBtnGoHomeDown() {
+      this.btnGoHome.setTexture('sprBtnGoHome');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnGoHome.on('pointerup', function fnBtnGoHomeUp() {
+      this.btnGoHome.setTexture('sprBtnGoHome');
+      this.scene.start('SceneWelcome');
+    }, this);
+  }
+
   create() {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
@@ -65,6 +98,7 @@ export default class SceneGameOver extends Phaser.Scene {
       });
       this.textHigherscore(higher);
       this.createBtnRestart();
+      this.createBtnGoHome();
     });
 
     this.textYourScore();

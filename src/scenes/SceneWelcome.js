@@ -46,7 +46,7 @@ class SceneWelcome extends Phaser.Scene {
     const centerScreen = this.game.config.height * 0.5;
     this.btnInstructions = this.add.sprite(
       halfScreen,
-      centerScreen + 70,
+      centerScreen + 90,
       'sprBtnInstructions',
     );
     this.btnInstructions.setInteractive();
@@ -73,7 +73,7 @@ class SceneWelcome extends Phaser.Scene {
     const centerScreen = this.game.config.height * 0.5;
     this.btnAbout = this.add.sprite(
       halfScreen,
-      centerScreen + 140,
+      centerScreen + 180,
       'sprBtnAbout',
     );
     this.btnAbout.setInteractive();
@@ -86,6 +86,16 @@ class SceneWelcome extends Phaser.Scene {
     this.btnAbout.on('pointerout', function btnAboutOut() {
       this.setTexture('sprBtnAbout');
     });
+
+    this.btnAbout.on('pointerdown', function btnAboutDown() {
+      this.btnAbout.setTexture('sprBtnAbout');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnAbout.on('pointerup', function btnAboutUp() {
+      this.btnAbout.setTexture('sprBtnAbout');
+      this.scene.start('SceneInstructions');
+    }, this);
   }
 
   create() {
