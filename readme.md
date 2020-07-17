@@ -42,6 +42,8 @@ Core concepts : [Webpack](https://webpack.js.org/concepts/)
 
 ## Play the game
 
+- We have two stages on this game, every stage increse de speed of the enemies
+
 - Welcome scene where everything start
 
 
@@ -59,7 +61,7 @@ Core concepts : [Webpack](https://webpack.js.org/concepts/)
 
 ## How was designed the game
 
-This game was designed thinking on the famous movie star wars, the main idea is about having a shooter and some enemies, we customize some existing 
+This game was designed thinking on the famous movie star wars, the main idea is about having a shooter and some enemies.
 
 * Genres
   - FPS: First-person shooters: this game build thinking in one person to be the shooter and increse his score if he is able to shoot all ship enemies.
