@@ -7,6 +7,7 @@ import MoldyShip from '../objects/MoldyShip';
 import ScrollingBackground from './ScrollingBackground';
 import PlayerScore from '../objects/PlayerScore';
 
+
 export default class SceneMain extends Phaser.Scene {
   constructor() {
     super({ key: 'SceneMain' });
@@ -43,6 +44,10 @@ export default class SceneMain extends Phaser.Scene {
       frameWidth: 16,
       frameHeight: 16,
     });
+    this.load.spritesheet('sprMeteor', 'assets/sprMeteor.png', {
+      frameWidth: 128,
+      frameHeight: 128,
+    });
     this.load.spritesheet('sprEnemy3', 'assets/sprEnemy3.png', {
       frameWidth: 64,
       frameHeight: 49,
@@ -72,6 +77,7 @@ export default class SceneMain extends Phaser.Scene {
       frameRate: 20,
       repeat: -1,
     });
+
     this.anims.create({
       key: 'sprEnemy2',
       frames: this.anims.generateFrameNumbers('sprEnemy2'),
@@ -213,38 +219,30 @@ export default class SceneMain extends Phaser.Scene {
   }
 
   addEventTimerEnemies() {
+    const halfScreen = this.game.config.width;
     this.time.addEvent({
-      delay: 400,
+      delay: 1000,
       callback() {
         let enemy = null;
-        if (Phaser.Math.Between(0, 10) >= 3) {
-          enemy = new GunShip(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          );
-        } else if (Phaser.Math.Between(0, 10) >= 5) {
+        const aleatoryElement = Phaser.Math.Between(0, 10);
+        const aleatoryXposition = Phaser.Math.Between(0, halfScreen);
+
+        if (aleatoryElement >= 1 && aleatoryElement < 3) {
+          enemy = new GunShip(this, aleatoryXposition, 0);
+        } else if (aleatoryElement >= 3 && aleatoryElement < 5) {
           if (this.getEnemiesByType('ChaserShip').length < 5) {
-            enemy = new ChaserShip(
-              this,
-              Phaser.Math.Between(0, this.game.config.width),
-              0,
-            );
+            enemy = new ChaserShip(this, aleatoryXposition, 0);
+            enemy.body.velocity.y = Phaser.Math.Between(50, 100);
           }
-        } else if (Phaser.Math.Between(0, 10) >= 5) {
+        } else if (aleatoryElement >= 5 && aleatoryElement < 7) {
           if (this.getEnemiesByType('MoldyShip').length < 5) {
-            enemy = new MoldyShip(
-              this,
-              Phaser.Math.Between(0, this.game.config.width),
-              0,
-            );
+            enemy = new MoldyShip(this, aleatoryXposition, 0);
+            enemy.body.velocity.y = Phaser.Math.Between(150, 200);
+            enemy.shootTimer = enemy.addShooterEvent();
           }
         } else {
-          enemy = new CarrierShip(
-            this,
-            Phaser.Math.Between(0, this.game.config.width),
-            0,
-          );
+          enemy = new CarrierShip(this, aleatoryXposition, 0);
+          enemy.body.velocity.y = Phaser.Math.Between(50, 100);
         }
         if (enemy !== null) {
           enemy.setScale(Phaser.Math.Between(10, 15) * 0.1);
@@ -258,23 +256,8 @@ export default class SceneMain extends Phaser.Scene {
 
   changeVelocity() {
     const scoreTotal = this.playerInfo.getData('score');
-    switch (scoreTotal) {
-      case 5:
-        console.log('score 5');
-        this.delayEnemie = 800;
-        break;
-      case 10:
-        console.log('score 10');
-        this.delayEnemie = 600;
-        break;
-      case 15:
-        console.log('score 15');
-        this.delayEnemie = 400;
-        break;
-      default:
-        console.log('score 0');
-        this.delayEnemie = 1000;
-        break;
+    if (scoreTotal === 30) {
+
     }
   }
 

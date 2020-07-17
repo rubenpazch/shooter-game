@@ -74,7 +74,7 @@ This game was designed thinking on the famous movie star wars, the main idea is 
     - Static enemies
     - shooter enemies
     - shooter enemies with fast movement
-  -Score system: every time the player is killed, the game calculate every result and shows on the game over view wich was the higher score.
+* Score system: every time the player is killed, the game calculate every result and shows on the game over view wich was the higher score.
 
 
 
@@ -182,3 +182,6 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - We thank microverse inc. for this learning opportunity.
+- Build a Space Shooter with Phaser 3 [tutorial](https://learn.yorkcs.com/category/tutorials/gamedev/phaser-3/build-a-space-shooter-with-phaser-3/)
+- Beginner’s Guide to Game Mechanics [design a game](https://www.gamedesigning.org/learn/basic-game-mechanics/)
+- Creating a Phaser 3 Template – Part 1 [design a game](https://phasertutorials.com/creating-a-phaser-3-template-part-1/)

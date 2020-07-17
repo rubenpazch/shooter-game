@@ -16,6 +16,7 @@ class GunShip extends Entity {
           this.y,
         );
         laser.setScale(this.scaleX);
+        laser.body.velocity.y = 200;
         this.scene.enemyLasers.add(laser);
       },
       callbackScope: this,
