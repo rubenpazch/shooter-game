@@ -50,7 +50,6 @@ export default class SceneGameOver extends Phaser.Scene {
   }
 
   create() {
-    const halfScreen = this.game.config.width * 0.5;
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
@@ -64,16 +63,34 @@ export default class SceneGameOver extends Phaser.Scene {
           higher = element.score;
         }
       });
-      this.higherScore = this.add.text(halfScreen, 300, `Higher score was :  ${higher}`, {
-        fontFamily: 'monospace',
-        fontSize: 17,
-        fontStyle: 'bold',
-        color: '#ffffff',
-        align: 'center',
-      });
-      this.higherScore.setOrigin(0.5);
+      this.textHigherscore(higher);
+      this.createBtnRestart();
     });
 
+    this.textYourScore();
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) {
+      const keys = ['sprBg0', 'sprBg1'];
+      const key = keys[Phaser.Math.Between(0, keys.length - 1)];
+      const bg = new ScrollingBackground(this, key, i * 10);
+      this.backgrounds.push(bg);
+    }
+  }
+
+  textHigherscore(higher) {
+    const halfScreen = this.game.config.width * 0.5;
+    this.higherScore = this.add.text(halfScreen, 300, `Higher score was :  ${higher}`, {
+      fontFamily: 'monospace',
+      fontSize: 17,
+      fontStyle: 'bold',
+      color: '#ffffff',
+      align: 'center',
+    });
+    this.higherScore.setOrigin(0.5);
+  }
+
+  textYourScore() {
+    const halfScreen = this.game.config.width * 0.5;
     this.playerScore = this.add.text(halfScreen, 350, `Your score was :  ${this.resultScore.score}`, {
       fontFamily: 'monospace',
       fontSize: 17,
@@ -82,14 +99,6 @@ export default class SceneGameOver extends Phaser.Scene {
       align: 'center',
     });
     this.playerScore.setOrigin(0.5);
-
-    this.backgrounds = [];
-    for (let i = 0; i < 5; i += 1) {
-      const keys = ['sprBg0', 'sprBg1'];
-      const key = keys[Phaser.Math.Between(0, keys.length - 1)];
-      const bg = new ScrollingBackground(this, key, i * 10);
-      this.backgrounds.push(bg);
-    }
   }
 
   update() {

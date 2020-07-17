@@ -102,8 +102,21 @@ class SceneInputName extends Phaser.Scene {
     this.title.setOrigin(0.5);
 
     let username = 'Type your name';
-    this.textName = this.rexUI.add.roundRectangle(halfScreen, 400, 400, 40, 5).setStrokeStyle(2, COLOR_LIGHT);
-    this.textName = this.rexUI.add.BBCodeText(halfScreen - 50, 340, username, { fixedWidth: 150, fixedHeight: 36, valign: 'center' });
+
+    this.textName = this.rexUI.add.roundRectangle(
+      halfScreen,
+      400,
+      400,
+      40,
+      5,
+    ).setStrokeStyle(2, COLOR_LIGHT);
+
+    this.textName = this.rexUI.add.BBCodeText(
+      halfScreen - 50,
+      340,
+      username,
+      { fixedWidth: 150, fixedHeight: 36, valign: 'center' },
+    );
     this.textName = this.add.text(halfScreen, 400, 'Your Name : Jonh Smith', {
       fontFamily: 'monospace',
       fontSize: 25,

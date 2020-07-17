@@ -78,12 +78,12 @@ class SceneWelcome extends Phaser.Scene {
     );
     this.btnAbout.setInteractive();
 
-    this.btnAbout.on('pointerover', function btnAboutHover() {
+    this.btnAbout.on('pointerover', function btnAboutOver() {
       this.btnAbout.setTexture('sprBtnAboutHover'); // set the button texture to sprBtnPlayHover
       this.sfx.btnOver.play(); // play the button over sound
     }, this);
 
-    this.btnAbout.on('pointerout', function () {
+    this.btnAbout.on('pointerout', function btnAboutOut() {
       this.setTexture('sprBtnAbout');
     });
   }
