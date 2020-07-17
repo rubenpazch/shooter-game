@@ -8,7 +8,7 @@
     "buildwatch": "webpack --config webpack.config.js --watch",
     "test": "jest",
     "watchtest": "jest --watch *.js",
-    "start": "npm run build && webpack-dev-server --port=8000"
+    "start": "npm run build && webpack-dev-server --host=0.0.0.0 --port=$PORT"
   },
   "repository": {
     "type": "git",
@@ -70,5 +70,7 @@
     "transform": {
       "^.+\\.js$": "babel-jest"
     }
-  }
+  },
+  "heroku-run-build-script": true
 }
+
