@@ -1,15 +1,15 @@
 # Javascript Shooter Game
 
-This project consist on building a video game using JavaScript and the game engine [Phaser](https://phaser.io/). It is required for this project using the best practices for programming javascript applications, use test tools like jest, modules, class, webpack, phaser 3.
+Shooter game is a project built using JavaScript and the game engine [Phaser](https://phaser.io/). In order to learn how to build games with Phaser 3 and  Webpack 4 the last version I did follow some tutorials and customize a previous example for building this amazing web application, the goal of this game is to kill different enemies shooting them and after finishing the two stages get and final compared with other players.
 
 
-![screenshot](./app_screenshot.png)
+![screenshot](./gifPreview.gif)
 
 ## Built With
 
 - HTML
 - Javascript
-- Webpack
+- Webpack 4
 - Webpack modules
 - Phaser 3
 - Jest
@@ -40,9 +40,9 @@ webpack is used to compile JavaScript modules. Once installed, you can interface
 
 Core concepts : [Webpack](https://webpack.js.org/concepts/)
 
-## Play the game
+## Play the game for playing   :video_game:
 
-- We have two stages on this game, every stage increse de speed of the enemies
+We have two stages on this game, every stage increse de speed of how fast enemies appeard
 
 - Welcome scene where everything start
 
