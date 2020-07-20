@@ -94,14 +94,40 @@ Map/level: Each stage represent a different level on the game, the map does not 
 
 
 
-### Game Mechanics vs Gameplay
-  - Movement: this game is based on the use of the keyboard to move around the board and shoot the enemies using space.
-  - Shoot: for shooting the enemies the player have to press space.
-  - Restart: the player can restart the game again after he is dead.
-  - Enemies: they are 3 types of enemies 
-    - Static enemies
-    - shooter enemies
-    - shooter enemies with fast movement
+### Game Mechanics 
+
+Movement: 
+
+This game is based on the use of the keyboard to move around the board and shoot 
+The enemies using space, the player can move the ship using these keys.
+
+- W : To move up
+- S : To move down
+- A : To move right 
+- D : To move left
+
+Shoot: 
+
+For shooting the enemies the player has to press space.
+
+Restart: 
+
+The player can restart the game again after he is dead, this means the player was shooted or hit for an enemy.
+
+Enemies: 
+
+they are 3 types of enemies 
+* Static enemies (Meteors) 
+* shooter enemies 
+* shooter enemies with the fast movement
+* Enemies that follow the player until they get hit the player
+
+### Gameplay
+
+This game is based on stages, the player starts on the first stage, in this point, the speed of enemies are slow, on the second stage the speed increase and enemies appear faster, every enemy has the possibility to hit the player and some of them are able to shoot, the game finish when the player is shooted or hit.
+
+
+
 * Score system: every time the player is killed, the game calculate every result and shows on the game over view wich was the higher score.
 
 - Score system: As soon as the player is dead the game will calculate all scores and get the higher and save it for future references.
