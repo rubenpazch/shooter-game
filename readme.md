@@ -229,7 +229,7 @@ npm install --global webpack
 ```
 Now you can make changes on src files to change the behavior of the application
 
-finally if you want to compile the code run this command
+finally, if you want to compile the code run this command
 
 ```
 npm run start
