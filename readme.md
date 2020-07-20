@@ -82,14 +82,19 @@ This game was designed thinking on the famous movie star wars, specifically on t
   
 ### In-Game Terms
 
-Difficulty:
+Difficulty: This game starts from easy and increases the difficulty on every stage, each stage increase the velocity of vertical movement and how fast these elements appear on the board.
+
+
+Game Over: The player should shoot the ship enemies and as soon as the player is shooted by the enemies the game is over and he has a final score, the game can be started again at this point.
+
+Hit Points: Every time the player shoot and enemies it counts as a point and the score increase, the final score is compared with other players to get a higher score.
+
+
+Map/level: Each stage represent a different level on the game, the map does not change when the different stage is open.
 
 
 
- Game Over: The player should shoot the ship enemies and as soon as the player is shooted by the enemies the game is over and he have a final score, the game can be restarted.
-
-
-* Game Mechanics vs Gameplay
+### Game Mechanics vs Gameplay
   - Movement: this game is based on the use of the keyboard to move around the board and shoot the enemies using space.
   - Shoot: for shooting the enemies the player have to press space.
   - Restart: the player can restart the game again after he is dead.
