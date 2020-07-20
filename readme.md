@@ -74,13 +74,42 @@ We have two stages on this game, every stage increase the speed of how fast enem
 
 This game was designed thinking on the famous movie star wars, specifically on the movie released on the year 1980 "The Empire Strikes Back", the main idea is about having a shooter and some enemies.
 
-### Genres
+## The Planification  :anger:
+
+This game was developed in 5 stages: 
+
+### 1 stage 
+
+In the first stage, we work on the learning process to user Phaser and how to integrate this framework with Webpack.
+
+###  2 stage
+
+During this stage, I spend some time working on searching some free elements and assets needed to customize the game, then I spend some time building the tutorial related with this game and understanding most of the features.
+
+
+>  My goal for this day was to have done most of the tutorial and start making changes, it was hard to understand some details about the code used on the example after I had a better idea about the code I start to customize some assets according to my story.
+
+###  3 stage
+
+At this stage I spent some time building the scenes for the welcome and the scene for entering the name information of the player.
+
+###  4 stage
+
+This was a very particular day where I spent time trying to refactor some code and work on customization of the game functionality.
+
+###  5 stage
+
+On the last stage I spend time doing more refactoring of the code and in parallel, I work on test cases, finally I did the readme file.
+
+
+
+### Genres    :anger:
   
   FPS: First-person shooters: this game build thinking in one person to be the shooter and increse his score if he is able to kill all ship enemies. 
 
   With that said, this is a game for one player, the only player has to move around the board and shoot as much as possible enemies, this game is supposed to have different stages, every stage will have different difficulties related with the speed of how enemies appear, how fast they move around in the board vertically, finally we have some enemies with the ability to follow the player.
   
-### In-Game Terms
+### In-Game Terms :anger:
 
 Difficulty: This game starts from easy and increases the difficulty on every stage, each stage increase the velocity of vertical movement and how fast these elements appear on the board.
 
@@ -94,7 +123,7 @@ Map/level: Each stage represent a different level on the game, the map does not 
 
 
 
-### Game Mechanics 
+### Game Mechanics  :anger:
 
 Movement: 
 
@@ -122,23 +151,32 @@ they are 3 types of enemies
 * shooter enemies with the fast movement
 * Enemies that follow the player until they get hit the player
 
-### Gameplay
-
+### Gameplay :anger:
+ 
 This game is based on stages, the player starts on the first stage, in this point, the speed of enemies are slow, on the second stage the speed increase and enemies appear faster, every enemy has the possibility to hit the player and some of them are able to shoot, the game finish when the player is shooted or hit.
 
 
 
-* Score system: every time the player is killed, the game calculate every result and shows on the game over view wich was the higher score.
+### Score System :anger:
 
-- Score system: As soon as the player is dead the game will calculate all scores and get the higher and save it for future references.
+Every time the player is killed, the game calculates every result and shows on the game overview which results was a higher score.
 
 
-## Prerequisites
+
+## Technical details  for the scoring system
+
+For saving and calculating the higher score we use an API to save every result of the game when the player types his name on the game this information is saved using the API, and as soon the game is over this score is saved and then we get all result to compare the higher score.
+
+
+
+
+## Setup
+
+### Prerequisites
 
 - Webpack 
 - NPM 
 
-## Setup
 
 Install NPM
 
@@ -157,6 +195,8 @@ To confirm that you have npm installed you can run this command in your terminal
 ```
 npm -v
 ```
+
+
 
 
 ## Install
