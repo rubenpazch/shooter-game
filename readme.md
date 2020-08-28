@@ -33,13 +33,17 @@
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore this project »</strong></a>
     <br />
     <br />&#10023;
-    <a href="https://morning-taiga-75196.herokuapp.com/">View Demo</a>   &#10023;  
+    <a href="https://phasershootergamejs.herokuapp.com/">View Demo</a>   &#10023;  
     <a href="https://github.com/rubenpazch/Group-our-transactions/issues">Report Bug</a>    &#10023;
     <a href="#Getting-Started">Getting Started</a> &#10023; <a href="#Install">Installing</a> &#10023;
     <a href="#Getting-Started">Getting Started</a> &#10023; <a href="#Extra-Feature">Extra Feature</a> &#10023;
     <a href="#Screenshots-of-the-App">Screenshots of the App</a> &#10023;
     <a href="#Authors">Author</a> &#10023;
-    
+    <a href="#Instructions-to-play-the-game">Instructions to play the game</a> &#10023;
+    <a href="#How-was-designed-the-game">How was designed the game</a> &#10023;
+
+
+
   </p>
 
 
@@ -47,54 +51,178 @@
 <br/>
 
 
-Shooter game is a project built using JavaScript and the game engine [Phaser](https://phaser.io/). In order to learn how to build games with Phaser 3 and  Webpack 4 the last version I did follow some tutorials and customize a previous example for building this amazing web application, the goal of this game is to kill different enemies shooting them and after finishing the two stages get a final score compared with other players.
+Shooter game is a project built using JavaScript and the game engine [Phaser](https://phaser.io/). In order to learn how to build games with Phaser 3 and  Webpack 4 the last version I did follow some tutorials and customize a previous example for building this amazing web application, the goal of this game is to kill different enemies shooting them and after finishing the two stages get a final score compared with other players score. Every stage increases the speed of how enemies appear.
 
 
 <br/>
 
-
-![screenshot](./gifPreview.gif)
-
+<img src="./gifPreview.gif" width="100%"/>
 
 <br/>
-
-
-
-## Built With
-
-- HTML
-- Javascript
-- Webpack 4
-- Webpack modules
-- Phaser 3
-- Jest
-- Babel  
-
-## Live Demo
-
-[Live Demo Link](https://phasershootergamejs.herokuapp.com/)
-
 
 ## Getting Started
 
-**Want to check the code and make some changes please .**
+This project was built using Javascript 6, Webpack version 3, and Phaser 3, it is a web application and for running on your local environment you should follow these guidelines.
 
-Do you want to clone this project please use this command on you terminal
+
+### Prerequisites
+
+- Javascript 6
+- Webpack 4
+- Phaser 3
+- Babel
+- NPM
+
+
+### Setup
+
+The project repository can be found in [GitHub link](https://github.com/rubenpazch/shooter-game) or just clone the project using this command. 
+
 
 ```
-git@github.com:rubenpazch/shooter-game.git
-```
-or
+Using SSH 
+
+# git clone  https://github.com/rubenpazch/shooter-game.git
+
+Using HTTPS
+
+# git clone  git@github.com:rubenpazch/shooter-game.git
 
 ```
-https://github.com/rubenpazch/shooter-game.git
+
++ Open terminal on your workspace with
+
+```
+cd /home/workspace/shooter-game
 ```
 
 
-Webpack is used to compile JavaScript modules. Once installed, you can interface with Webpack either from its CLI or API. If you're still new to Webpack, please read through the core concepts and this comparison to learn why you might use it over the other tools that are out in the community.
+
+## Install
 
 
-Core concepts : [Webpack](https://webpack.js.org/concepts/)
+Install NPM
+
+Check that you have node and npm installed
+
+To check if you have Node.js installed, run this command in your terminal:
+
+
+```
+node -v
+```
+
+To confirm that you have npm installed you can run this command in your terminal:
+
+
+```
+npm -v
+```
+
+install  npm and node  using command lines
+
+
+```
+sudo apt update
+sudo apt install npm
+sudo apt install nodejs
+```
+
+
+:Show
+Local Installation Webpack
+
+To install the latest release or a specific version, run one of the following commands:
+
+```
+npm install --save-dev webpack
+npm install --save-dev webpack-cli
+```
+
+Global Installation Webpack
+
+The following NPM installation will make webpack available globally:
+
+```
+npm install --global webpack
+```
+Now you can make changes on src files to change the behavior of the application
+
+finally, if you want to run and compile the code run this command
+
+```
+npm run start
+```
+
+After running the above command you will see in your console like a log of activity if everything is ok you will see something like this:
+
+![screenshot](./server.png)
+
+
+
+### Usage
+
+if you have this in your screen that minds everything is working correctly now you can go to the browser with the next link:
+
+```
+http://localhost:8000/
+```
+
+
+### Run tests
+
+Run the test suite to verify that everything is working correctly:
+
+```
+npm run test
+```
+
+If the test suite passes, you'll be ready to run the app in a local server:
+
+
+### Deployment
+
+To deploy to heroku first login in heroku
+
+```
+# heroku login
+```
+
+Create a new project in heroku
+
+```
+# heroku create
+```
+
+You can verify that the remote was added to your project by running:
+```
+# git config --list | grep heroku
+# git push heroku master
+```
+
+Migrate your database
+```
+heroku run rake db:migrate
+```
+
+### Tools used on this project
+
+- Visual Studio Code
+- Stylelint
+- Jest
+- Babel
+
+<br/>
+
+
+## Watch the Live Version
+
+
+click on the link to watch [live version](https://phasershootergamejs.herokuapp.com/)
+
+<br/>
+
+
 
 ## Instructions to play the game   :video_game:
 
@@ -129,7 +257,7 @@ We have two stages on this game, every stage increase the speed of how fast enem
 
 This game was designed thinking on the famous movie star wars, specifically on the movie released on the year 1980 "The Empire Strikes Back", the main idea is about having a shooter and some enemies.
 
-## The Planification  :anger:
+### The Planification  :anger:
 
 This game was developed in 5 stages: 
 
@@ -225,87 +353,9 @@ For saving and calculating the higher score we use an API to save every result o
 
 
 
-## Setup
-
-### Prerequisites
-
-- Webpack 
-- NPM 
-
-
-Install NPM
-
-Check that you have node and npm installed
-
-To check if you have Node.js installed, run this command in your terminal:
-
-
-```
-node -v
-```
-
-To confirm that you have npm installed you can run this command in your terminal:
-
-
-```
-npm -v
-```
 
 
 
-
-## Install
-
-install npm and webpack
-
-
-```
-sudo apt update
-sudo apt install npm
-```
-
-
-:Show
-Local Installation Webpack
-
-To install the latest release or a specific version, run one of the following commands:
-
-```
-npm install --save-dev webpack
-npm install --save-dev webpack-cli
-```
-
-Global Installation Webpack
-
-The following NPM installation will make webpack available globally:
-
-```
-npm install --global webpack
-```
-Now you can make changes on src files to change the behavior of the application
-
-finally, if you want to compile the code run this command
-
-```
-npm run start
-```
-
-After running the above command you will see in your console like a log of activity if everything is ok you will see something like this:
-
-![screenshot](./server.png)
-
-
-if you have this in your screen that minds everything is working correctly now you can go to the browser with the next link:
-
-```
-http://localhost:8000/
-```
-
-## Run test on local
-
-```
-npm run test
-```
 
 
 
