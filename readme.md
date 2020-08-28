@@ -1,3 +1,51 @@
+<p align="center">
+    <img src="./images/shooter.png"
+        height="230">
+</p>
+
+<p align="center">
+    <h1 align="center"> Shooter Game  </h1>    
+</p>
+
+<p align="center">
+    <h2 align="center"> Web application using phaser to create a game</h2>    
+</p>
+
+<p align="center">
+    <a href="https://img.shields.io/badge/Microverse-blueviolet" alt="Contributors">
+        <img src="https://img.shields.io/badge/Microverse-blueviolet" /></a>
+    <a href="https://www.w3schools.com/js/js_es6.asp" alt="JavaScript">
+        <img src="https://img.shields.io/badge/JavaScript-6.0.0-yellowgreen" /></a>
+    <a href="https://webpack.js.org/" alt="Webpack">
+        <img src="https://img.shields.io/badge/Webpack%204-4.0.0-lightgrey" /></a>
+    <a href="http://phaser.io/" alt="Phaser">
+        <img src="https://img.shields.io/badge/Phaser3-3.23.0-green" /></a>
+    <a href="https://jestjs.io/docs/en/getting-started" alt="Jest">
+        <img src="https://img.shields.io/badge/Jest-26.1.0-red" /></a>  
+    <a href="https://www.heroku.com/" alt="Heroku">
+        <img src="https://img.shields.io/badge/Heroku-published-lightgrey" /></a>
+</p>
+
+
+
+  <p align="center">    
+    <br />
+    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore this project »</strong></a>
+    <br />
+    <br />&#10023;
+    <a href="https://morning-taiga-75196.herokuapp.com/">View Demo</a>   &#10023;  
+    <a href="https://github.com/rubenpazch/Group-our-transactions/issues">Report Bug</a>    &#10023;
+    <a href="#Getting-Started">Getting Started</a> &#10023; <a href="#Install">Installing</a> &#10023;
+    <a href="#Getting-Started">Getting Started</a> &#10023; <a href="#Extra-Feature">Extra Feature</a> &#10023;
+    <a href="#Screenshots-of-the-App">Screenshots of the App</a> &#10023;
+    <a href="#Authors">Author</a> &#10023;
+    
+  </p>
+
+
+
+<br/>
+
 # Javascript Shooter Game
 
 Shooter game is a project built using JavaScript and the game engine [Phaser](https://phaser.io/). In order to learn how to build games with Phaser 3 and  Webpack 4 the last version I did follow some tutorials and customize a previous example for building this amazing web application, the goal of this game is to kill different enemies shooting them and after finishing the two stages get a final score compared with other players.
