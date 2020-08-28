@@ -127,10 +127,9 @@ sudo apt install nodejs
 ```
 
 
-:Show
 Local Installation Webpack
 
-To install the latest release or a specific version, run one of the following commands:
+To install the latest release run the following commands:
 
 ```
 npm install --save-dev webpack
