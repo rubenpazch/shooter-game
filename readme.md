@@ -38,7 +38,7 @@
     <a href="#Getting-Started">Getting Started</a> &#10023; <a href="#Install">Installing</a> &#10023;
     <a href="#Screenshots-of-the-App">Screenshots of the App</a> &#10023;
     <a href="#Authors">Author</a> &#10023;
-    <a href="#-Instructions-to-play-the-game---">Instructions to play the game</a> &#10023;
+    <a href="#Instructions-to-play-the-game">Instructions to play the game</a> &#10023;
     <a href="#How-was-designed-the-game">How was designed the game</a> &#10023;
 
 
