@@ -223,7 +223,7 @@ click on the link to watch [live version](https://phasershootergamejs.herokuapp.
 
 
 
-## Instructions to play the game   :video_game:
+## Instructions to play the game
 
 We have two stages on this game, every stage increase the speed of how fast enemies appear.
 
