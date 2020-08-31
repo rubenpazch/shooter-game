@@ -30,7 +30,7 @@
 
   <p align="center">    
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore this project »</strong></a>
+    <a href="https://github.com/rubenpazch/shooter-game"><strong>Explore this project »</strong></a>
     <br />
     <br />&#10023;
     <a href="https://phasershootergamejs.herokuapp.com/">View Demo</a>   &#10023;  
