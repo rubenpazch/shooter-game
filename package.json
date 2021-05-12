@@ -45,7 +45,7 @@
   },
   "dependencies": {
     "file-loader": "^6.0.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "phaser": "^3.23.0",
     "phaser3-rex-plugins": "^1.1.19"
   },
